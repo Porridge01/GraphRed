@@ -6,13 +6,16 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Buttons, Menus, ExtDlgs, UTools, UFigures, UAbout;
+  ComCtrls, Buttons, Menus, ExtDlgs, ColorBox, StdCtrls, UTools, UFigures,
+  UAbout;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    SetColorBox: TColorBox;
+    SetWidthBox: TComboBox;
     Save: TMenuItem;
     MMenu: TMainMenu;
     Fail: TMenuItem;
@@ -35,6 +38,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure PaintBoxPaint(Sender: TObject);
     procedure SaveClick(Sender: TObject);
+    procedure SetColorBoxChange(Sender: TObject);
+    procedure SetWidthBoxChange(Sender: TObject);
     procedure ToolClick(Sender: TObject);
     procedure YExitClick(Sender: TObject);
   private
@@ -141,6 +146,16 @@ begin
   finally
     bmp1.Free;
   end;
+end;
+
+procedure TMainForm.SetColorBoxChange(Sender: TObject);
+begin
+  TTool.SetColor(SetColorBox.Selected);
+end;
+
+procedure TMainForm.SetWidthBoxChange(Sender: TObject);
+begin
+  TTool.SetWidth(StrToInt(SetWidthBox.Text));
 end;
 
 procedure TMainForm.ToolClick(Sender: TObject);

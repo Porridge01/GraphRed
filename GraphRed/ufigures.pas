@@ -11,7 +11,10 @@ Type
   TFigure = Class(TObject)
     private
       YFigures: array of TFigure; static;
+      YColor: TColor;
+      YWidth: integer;
     public
+      constructor Create(SetColor: TColor; SetWidth: integer);
       class procedure addFigure(figure: TFigure); static;
       class function RecentFigure(): TFigure; static;
       procedure Draw(Canvas: TCanvas); virtual; abstract;
@@ -68,6 +71,12 @@ Type
 
 implementation
 
+constructor TFigure.Create(SetColor: TColor; SetWidth: Integer);
+begin
+  YColor:= SetColor;
+  YWidth:= SetWidth;
+end;
+
 class procedure TFigure.addFigure(figure: TFigure);
 begin
   SetLength(TFigure.YFigures, Length(Tfigure.Yfigures)+1);
@@ -89,6 +98,8 @@ procedure TPen.Draw(Canvas: TCanvas);
 var Point: TPOint;
 begin
   with Canvas do begin
+    Pen.Color:=YColor;
+    Pen.Width:=YWidth;
     MoveTO(YPoints[0]);
     for point in YPoints do
         lineTo(point);
@@ -110,14 +121,16 @@ begin
     MoveTO(YPoints[0]);
     for point in YPoints do
         lineTo(point);
-    Pen.Color:=clBlack;
-    Pen.Width:=1;
+    //Pen.Color:=clBlack;
+    //Pen.Width:=1;
   end;
 end;
 
 procedure TLine.Draw(Canvas: TCanvas);
 begin
   with Canvas do begin
+    Pen.Color:=YColor;
+    Pen.Width:=YWidth;
     MoveTO(TopLeft);
     LineTo(BottomRight);
   end;
@@ -126,6 +139,8 @@ end;
 procedure TPolyline.Draw(Canvas: TCanvas);
 var YLine: Tline;
 begin
+  Canvas.Pen.Color:=YColor;
+  CAnvas.Pen.Width:=YWidth;
   for Yline in YLines do
       with Canvas do begin
         MoveTo(Yline.TopLeft);
@@ -136,7 +151,7 @@ end;
 procedure TPolyline.AddLine();
 begin
   SetLength(YLines, Length(YLines) + 1);
-  YLines[High(YLines)]:= TLine.Create;
+  YLines[High(YLines)]:= TLine.Create(YColor, YWidth);
 end;
 
 function TPolyline.RecentLine(): Tline;
@@ -147,6 +162,8 @@ end;
 procedure TRectangle.Draw(Canvas: TCanvas);
 begin
   with Canvas do begin
+    Pen.Color:=YColor;
+    Pen.Width:=YWidth;
     Brush.Style:=bsClear;
     Rectangle(TopLeft.X, TopLeft.y, BottomRight.X, BottomRight.Y);
   end;
@@ -155,6 +172,8 @@ end;
 procedure TRoundRectangle.Draw(Canvas: TCanvas);
 begin
   with Canvas do begin
+    Pen.Color:=YColor;
+    Pen.Width:=YWidth;
     Brush.Style:=bsClear;
     RoundRect(TopLeft.X, TopLeft.y, BottomRight.X, BottomRight.Y, 20, 20);
   end;
@@ -163,6 +182,8 @@ end;
 procedure TEllipse.Draw(Canvas: TCanvas);
 begin
   with Canvas do begin
+    Pen.Color:=YColor;
+    Pen.Width:=YWidth;
     Brush.Style:=bsClear;
     Ellipse(TopLeft.X, TopLeft.y, BottomRight.X, BottomRight.Y);
   end;
