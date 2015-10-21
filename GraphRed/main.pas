@@ -50,7 +50,6 @@ type
 
 var
   MainForm: TMainForm;
-  PictureNum: integer;
   IndexOfBtn: integer;
   SetBtn: TBitBtn;
 
@@ -62,10 +61,8 @@ implementation
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
-  i, SetTop, SetLeft: integer;
+  i: integer;
 begin
-  SetLeft:=0;
-  SetTop:=0;
   for i:=0 to high(TTool.Tools) do begin
     SetBtn:=TBitBtn.Create(Self);
     with SetBtn do begin
@@ -76,11 +73,8 @@ begin
       Width:=25;
       Height:=25;
       Glyph:=TTool.Tools[i].SetImgBtn;
-      SetTop:=(i div 2) * 35;
-      Top:=10+SetTop;
-      Left:=10+SetLeft;
-      if SetLeft = 0 then SetLeft:=35
-         else SetLeft:=0;
+      Top:=10+(i div 2) * 35;
+      Left:=10+(i mod 2) * 35;
       OnClick:= @mainForm.ToolClick;
       Tag:=i;
       if i = 0 then SetBtn.Click;
@@ -128,9 +122,7 @@ procedure TMainForm.SaveClick(Sender: TObject);
 var bmp1: TBitmap;
     Dest, Source: TRect;
 begin
-  SaveDialog1.Execute;
-  exit;
-  PictureNum+=1;
+  Dlg1.Execute;
   bmp1 := TBitmap.Create;
   try
     with bmp1 do
@@ -142,7 +134,7 @@ begin
     with PaintBox do
       Source := Rect(0, 0, Width, Height);
       bmp1.Canvas.CopyRect(Dest, PaintBox.Canvas, Source);
-      bmp1.SaveToFile('Безымянный '+IntToStr(PictureNum)+'.bmp');
+      bmp1.SaveToFile(Dlg1.FileName);
   finally
     bmp1.Free;
   end;
