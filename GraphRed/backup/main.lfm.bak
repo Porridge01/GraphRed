@@ -93,6 +93,7 @@ object MainForm: TMainForm
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = '.png'
+    FileName = 'zzz'
     Filter = '*.*|*.*'
     FilterIndex = 0
     left = 32

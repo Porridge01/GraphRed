@@ -47,7 +47,6 @@ var
   MainForm: TMainForm;
   PictureNum: integer;
   IndexOfBtn: integer;
-  point: Tpoint;
   SetBtn: TBitBtn;
 
 implementation
@@ -68,8 +67,8 @@ begin
       Name:=TTool.Tools[i].ToString+IntToStr(i);
       Caption:='';
       Parent:=Self;
-      Width:=25;
       Spacing:=1;
+      Width:=25;
       Height:=25;
       Glyph:=TTool.Tools[i].SetImgBtn;
       SetTop:=(i div 2) * 35;
@@ -87,21 +86,16 @@ end;
 procedure TMainForm.PaintBoxMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) and (ssRight in Shift) then exit;
-  point.x:=x;
-  point.y:=y;
-  TTool.Tools[IndexOfBtn].OnMouseDown(Sender, Shift, Point);
+  if (ssLeft in Shift) and (ssRight in Shift) then Exit;
+  TTool.Tools[IndexOfBtn].OnMouseDown(Shift, X,Y);
 end;
 
 procedure TMainForm.PaintBoxMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
-  stat1.Panels[0].Text := 'Область для рисования';
   stat1.Panels[1].text := 'x:'+inttostr(x)+ '  y:'+inttostr(y);
-  if (ssLeft in Shift) then begin
-  point.x:=x;
-  point.y:=y;
-  TTool.Tools[IndexOfBtn].OnMouseMove(Sender, Shift, point);
+  if (ssLeft in Shift) or (ssRight in Shift) then begin
+  TTool.Tools[IndexOfBtn].OnMouseMove(Shift, X,Y);
   PaintBox.Invalidate;
   end;
 end;
@@ -109,11 +103,8 @@ end;
 procedure TMainForm.PaintBoxMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then begin
-  point.x:=x;
-  point.y:=y;
-  TTool.Tools[IndexOfBtn].OnMouseUp(Sender, Shift, Point);
-  end;
+  if (ssLeft in Shift) and (ssRight in Shift) then Exit;
+  TTool.Tools[IndexOfBtn].OnMouseUp(Shift, X,Y);
 end;
 
 procedure TMainForm.AboutClick(Sender: TObject);

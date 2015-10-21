@@ -15,83 +15,83 @@ Type
       SetImgBtn: TBitMap;
       constructor Create(PathToFile: String); overload;
       Class procedure addTool(Tool: TTool); static;
-      procedure OnMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure OnMouseDown(Shift: TShiftState; X, Y: Integer);
        virtual; abstract;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        virtual; abstract;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        virtual; abstract;
   end;
 
 
   TTPen = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTErase = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTLine = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTPolyline = Class(TTool)
     public
-      Onclick: boolean;
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      ClickMemory: boolean;
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTRectangle = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTRoundRectangle = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
   TTEllipse = Class(TTool)
     public
-      procedure onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseDown(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseMove(Shift: TShiftState; X, Y: Integer);
        override;
-      procedure onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+      procedure onMouseUp(Shift: TShiftState; X, Y: Integer);
        override;
   end;
 
@@ -111,153 +111,147 @@ begin
 end;
 
 
-procedure TTPen.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTPen.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
      TFigure.addFigure(Tpen.Create);
 end;
 
-procedure TTPen.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTPen.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as Tpen).addPoint(point);
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as Tpen).addPoint(point(X,Y));
 end;
 
-procedure TTPen.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTPen.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
 
 end;
 
 
-procedure TTErase.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTErase.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
      TFigure.addFigure(TErase.Create);
 end;
 
-procedure TTErase.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTErase.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TErase).addPoint(point);
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as TErase).addPoint(point(X,Y));
 end;
 
-procedure TTErase.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTErase.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
 
 end;
 
 
-procedure TTLine.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTLine.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then begin
     TFigure.addFigure(TLine.Create);
-    (TFigure.RecentFigure() as Tline).TopLeft:=point;
-  end;
+    (TFigure.RecentFigure() as Tline).TopLeft:=point(X,Y);
 end;
 
-procedure TTLine.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTLine.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TLine).BottomRight:=point;
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as TLine).BottomRight:=point(X,Y);
 end;
 
-procedure TTLine.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTLine.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-  (TFigure.RecentFigure() as TLine).BottomRight:=point;
+  (TFigure.RecentFigure() as TLine).BottomRight:=point(X,Y);
 end;
 
 
-procedure TTPolyline.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTPolyline.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssRight in Shift) and Onclick then begin
-     OnClick:=False;
-     (Tfigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point;
+
+  {if (ssLeft in Shift) then begin
+               ClickMemory:=True;
+               TFigure.AddFigure(TPolyline.Create);
+               (TFIgure.RecentFigure() as TPolyline).addLine;
+               (Tfigure.RecentFigure() as TPolyline).RecentLine().TopLeft:=point(X,Y);
+  end; }
+
+
+  if (ssRight in Shift) then begin
+     (Tfigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point(X,Y);
+     ClickMemory:=False;
      Exit;
   end;
 
-  if OnClick then begin
-     (TFigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point;
-  end else OnClick:=true;
-  if (ssLeft in Shift) then begin
-     TFigure.AddFigure(TPolyline.Create);
-     (TFIgure.RecentFigure() as TPolyline).addLine;
-     (Tfigure.RecentFigure() as TPolyline).RecentLine().TopLeft:=point;
+  if ClickMemory then
+    (Tfigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point(X,Y)
+  else
+    ClickMemory:=True;
+    TFigure.AddFigure(TPolyline.Create);
+    (TFIgure.RecentFigure() as TPolyline).addLine;
+    (Tfigure.RecentFigure() as TPolyline).RecentLine().TopLeft:=point(X,Y);
   end;
+
+procedure TTPolyline.onMouseMove(Shift: TShiftState; X, Y: Integer);
+begin
+    (TFigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point(X,Y);
 end;
 
-procedure TTPolyline.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTPolyline.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TPolyline).RecentLine().BottomRight:=point;
-end;
 
-procedure TTPolyline.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
-begin
 
 end;
 
 
-procedure TTRectangle.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRectangle.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then begin
      TFigure.addFigure(TRectangle.Create);
-    (TFigure.RecentFigure() as TRectangle).TopLeft:=point;
-  end;
+    (TFigure.RecentFigure() as TRectangle).TopLeft:=point(X,Y);
 end;
 
-procedure TTRectangle.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRectangle.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TRectangle).BottomRight:=point;
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as TRectangle).BottomRight:=point(X,Y);
 end;
 
-procedure TTRectangle.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRectangle.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TRectangle).BottomRight:=point;
+    (TFigure.RecentFigure() as TRectangle).BottomRight:=point(X,Y);
 end;
 
 
-procedure TTRoundRectangle.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRoundRectangle.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then begin
      TFigure.addFigure(TRoundRectangle.Create);
-    (TFigure.RecentFigure() as TRoundRectangle).TopLeft:=point;
-  end;
+    (TFigure.RecentFigure() as TRoundRectangle).TopLeft:=point(X,Y);
 end;
 
-procedure TTRoundRectangle.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRoundRectangle.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TRoundRectangle).BottomRight:=point;
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as TRoundRectangle).BottomRight:=point(X,Y);
 end;
 
-procedure TTRoundRectangle.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTRoundRectangle.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TROundRectangle).BottomRight:=point;
+    (TFigure.RecentFigure() as TROundRectangle).BottomRight:=point(X,Y);
 end;
 
 
-procedure TTEllipse.onMouseDown(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTEllipse.onMouseDown(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then begin
      TFigure.addFigure(TEllipse.Create);
-    (TFigure.RecentFigure() as TEllipse).TopLeft:=point;
-  end;
+    (TFigure.RecentFigure() as TEllipse).TopLeft:=point(X,Y);
 end;
 
-procedure TTEllipse.onMouseMove(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTEllipse.onMouseMove(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TEllipse).BottomRight:=point;
+    if not (ssLeft in Shift) and not(ssRight in Shift)  then Exit;
+    (TFigure.RecentFigure() as TEllipse).BottomRight:=point(X,Y);
 end;
 
-procedure TTEllipse.onMouseUp(Sender: TObject; Shift: TShiftState; Point: Tpoint);
+procedure TTEllipse.onMouseUp(Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssLeft in Shift) then
-    (TFigure.RecentFigure() as TEllipse).BottomRight:=point;
+    (TFigure.RecentFigure() as TEllipse).BottomRight:=point(X,Y);
 end;
 
 initialization
