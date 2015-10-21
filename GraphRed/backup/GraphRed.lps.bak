@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="8">
+      <Unit0>
+        <Filename Value="GraphRed.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="51" Y="15"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="112"/>
+        <CursorPos X="9" Y="135"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="utools.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UTools"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="158"/>
+        <CursorPos X="37" Y="175"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="ufigures.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Ufigures"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="29" Y="44"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="uabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Uabout"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="48" Y="23"/>
+        <ComponentState Value="1"/>
+        <UsageCount Value="44"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4195"/>
+        <CursorPos X="50" Y="4206"/>
+        <UsageCount Value="8"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="C:\lazarus\lcl\include\fpimagebitmap.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="123"/>
+        <CursorPos Y="141"/>
+        <UsageCount Value="8"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="C:\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="177"/>
+        <CursorPos X="19" Y="186"/>
+        <UsageCount Value="25"/>
+        <Loaded Value="True"/>
+      </Unit7>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="main.pas"/>
+        <Caret Line="123" Column="61" TopLine="93"/>
+      </Position1>
+      <Position2>
+        <Filename Value="main.pas"/>
+        <Caret Line="82" TopLine="69"/>
+      </Position2>
+      <Position3>
+        <Filename Value="main.pas"/>
+        <Caret Line="28" Column="23" TopLine="23"/>
+      </Position3>
+      <Position4>
+        <Filename Value="main.pas"/>
+        <Caret Line="27" Column="23" TopLine="22"/>
+      </Position4>
+      <Position5>
+        <Filename Value="main.pas"/>
+        <Caret Line="79" Column="13" TopLine="74"/>
+      </Position5>
+      <Position6>
+        <Filename Value="GraphRed.lpr"/>
+      </Position6>
+      <Position7>
+        <Filename Value="main.pas"/>
+        <Caret Line="126" Column="39" TopLine="100"/>
+      </Position7>
+      <Position8>
+        <Filename Value="main.pas"/>
+        <Caret Line="83" Column="15" TopLine="61"/>
+      </Position8>
+      <Position9>
+        <Filename Value="main.pas"/>
+        <Caret Line="85" Column="37" TopLine="67"/>
+      </Position9>
+      <Position10>
+        <Filename Value="main.pas"/>
+        <Caret Line="93" Column="46" TopLine="75"/>
+      </Position10>
+      <Position11>
+        <Filename Value="main.pas"/>
+        <Caret Line="114" Column="41" TopLine="81"/>
+      </Position11>
+      <Position12>
+        <Filename Value="main.pas"/>
+        <Caret Line="97" Column="19" TopLine="77"/>
+      </Position12>
+      <Position13>
+        <Filename Value="main.pas"/>
+        <Caret Line="98" Column="69" TopLine="75"/>
+      </Position13>
+      <Position14>
+        <Filename Value="main.pas"/>
+        <Caret Line="88" Column="67" TopLine="70"/>
+      </Position14>
+      <Position15>
+        <Filename Value="utools.pas"/>
+        <Caret Line="123" Column="62" TopLine="104"/>
+      </Position15>
+      <Position16>
+        <Filename Value="utools.pas"/>
+        <Caret Line="198" Column="20" TopLine="186"/>
+      </Position16>
+      <Position17>
+        <Filename Value="main.pas"/>
+        <Caret Line="88" Column="49" TopLine="70"/>
+      </Position17>
+      <Position18>
+        <Filename Value="main.pas"/>
+        <Caret Line="93" Column="6" TopLine="71"/>
+      </Position18>
+      <Position19>
+        <Filename Value="main.pas"/>
+        <Caret Line="89" Column="8" TopLine="87"/>
+      </Position19>
+      <Position20>
+        <Filename Value="utools.pas"/>
+        <Caret Line="105" Column="24" TopLine="102"/>
+      </Position20>
+      <Position21>
+        <Filename Value="utools.pas"/>
+        <Caret Line="93" Column="24" TopLine="86"/>
+      </Position21>
+      <Position22>
+        <Filename Value="utools.pas"/>
+        <Caret Line="98" Column="24" TopLine="74"/>
+      </Position22>
+      <Position23>
+        <Filename Value="utools.pas"/>
+        <Caret Line="81" Column="24" TopLine="67"/>
+      </Position23>
+      <Position24>
+        <Filename Value="main.pas"/>
+        <Caret Line="115" Column="52" TopLine="86"/>
+      </Position24>
+      <Position25>
+        <Filename Value="utools.pas"/>
+        <Caret Line="264" Column="34" TopLine="238"/>
+      </Position25>
+      <Position26>
+        <Filename Value="main.pas"/>
+        <Caret Line="75" Column="79" TopLine="48"/>
+      </Position26>
+      <Position27>
+        <Filename Value="utools.pas"/>
+        <Caret Line="173" Column="36" TopLine="152"/>
+      </Position27>
+      <Position28>
+        <Filename Value="utools.pas"/>
+        <Caret Line="175" Column="37" TopLine="158"/>
+      </Position28>
+      <Position29>
+        <Filename Value="main.pas"/>
+        <Caret Line="67" Column="11" TopLine="42"/>
+      </Position29>
+      <Position30>
+        <Filename Value="main.pas"/>
+        <Caret Line="134" Column="15" TopLine="111"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
